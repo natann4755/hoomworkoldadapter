@@ -4,11 +4,13 @@ public class dataMoovei {
     private String titel;
     private String text;
     private int imeg;
+    private String uu;
 
-    public dataMoovei(String titel, String text, int imeg) {
+    public dataMoovei(String titel, String text, int imeg, String uu) {
         this.titel = titel;
         this.text = text;
         this.imeg = imeg;
+        this.uu = uu;
     }
 
     public String getTitel() {
@@ -33,5 +35,13 @@ public class dataMoovei {
 
     public void setImeg(int imeg) {
         this.imeg = imeg;
+    }
+
+    public String getUu() {
+        return uu;
+    }
+
+    public void setUu(String uu) {
+        this.uu = uu;
     }
 }

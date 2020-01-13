@@ -13,6 +13,7 @@ public class mooveisAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
     private ArrayList<dataMoovei> data;
+    mooveyHendler hodler;
 
     public mooveisAdapter(Context context, ArrayList<dataMoovei> arreydata) {
         data = arreydata;
@@ -37,27 +38,37 @@ public class mooveisAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        mooveyHendler hodler;
+
 
         if (convertView==null) {
             convertView = inflater.inflate(R.layout.item, parent, false);
-            hodler = new mooveyHendler();
+           onCreat(convertView,parent);
 
-            hodler.imeg = convertView.findViewById(R.id.immg);
-            hodler.titel = convertView.findViewById(R.id.TextViewTitel);
-            hodler.text = convertView.findViewById(R.id.TextViewText);
-            convertView.setTag(hodler);
         }else {
             hodler = (mooveyHendler) convertView.getTag();
         }
-
         dataMoovei moovey = getItem(position);
+
+        bindveiw(moovey);
+
+        return convertView;
+    }
+
+    private void bindveiw(dataMoovei moovey ) {
 
         hodler.imeg.setImageResource(moovey.getImeg());
         hodler.titel.setText(moovey.getTitel());
         hodler.text.setText(moovey.getText());
+    }
 
-        return convertView;
+    private void onCreat(View convertView, ViewGroup parent) {
+//        convertView = inflater.inflate(R.layout.item, parent, false);
+        hodler = new mooveyHendler();
+
+        hodler.imeg = convertView.findViewById(R.id.immg);
+        hodler.titel = convertView.findViewById(R.id.TextViewTitel);
+        hodler.text = convertView.findViewById(R.id.TextViewText);
+        convertView.setTag(hodler);
     }
 
     public static class mooveyHendler{
